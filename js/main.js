@@ -14,13 +14,25 @@ btnReset.classList.add('d-none');
 
 btnStart.addEventListener('click',function(){
     listaCelle = getProgrssiveElement(numQuadrati,'div','class','box-quadrato',quadratiClass,'dd',0);
-    
+    let numList = [];
+    let count = 0;
+    let min = 0
+    let numBomb = 16;
+    let bombList = genereteUniqueRandomNUmber(min,numQuadrati,numList,count,numBomb);
+    console.log(bombList);
     for(let i = 0; i<numQuadrati; i++){
         quadrati.append(listaCelle[i]);
         listaCelle[i].innerHTML= i + 1;
         listaCelle[i].addEventListener('click', function(){
-            listaCelle[i].classList.toggle('color2')
-        })
+            for(let j; j<bombList.length;j++){
+                if(i == bombList[j]){
+                    listaCelle[i].classList.add('color1');
+                }
+                else{
+                    listaCelle[i].classList.add('color2');
+                }
+            }
+        });
     }
     counteinerQuadrati.append(quadrati);
     btnReset.classList.remove('d-none');
