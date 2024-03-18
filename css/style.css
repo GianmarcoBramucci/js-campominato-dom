@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    margin: 0;    
+    padding: 0;
+}
+.box{
+    height: 800px;
+    width: 800px;
+}
+.box-quadrato{
+    height: 70px;
+    width: 70px;
+    margin: 2px;
+    text-align: center;
+    color: aliceblue;
+}
+.color1{
+    background-color: red;
+}
+.color2{
+    background-color: blue;
+}
+.color3{
+    background-color: green;
+}
+.color4{
+    background-color: purple;
+}
