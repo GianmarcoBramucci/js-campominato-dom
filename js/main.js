@@ -3,6 +3,7 @@ let counteinerQuadrati;
 let quadratiClass='box-quadrato color-5';
 let quadrati;
 let classiControllo = '';
+let divRisultato = document.getElementById('risultato');
 let btnStart = document.getElementById('btn-submit73');
 let btnReset = document.getElementById('btn-submit37');
 let listaCelle = 0;
@@ -16,22 +17,26 @@ btnStart.addEventListener('click',function(){
     listaCelle = getProgrssiveElement(numQuadrati,'div','class','box-quadrato',quadratiClass,'dd',0);
     let numList = [];
     let count = 0;
-    let min = 0
+    let min = 0;
     let numBomb = 16;
+    let score = 0;
     let bombList = genereteUniqueRandomNUmber(min,numQuadrati,numList,count,numBomb);
     console.log(bombList);
     for(let i = 0; i<numQuadrati; i++){
         quadrati.append(listaCelle[i]);
         listaCelle[i].innerHTML= i + 1;
         listaCelle[i].addEventListener('click', function(){
-            for(let j; j<bombList.length;j++){
-                if(i == bombList[j]){
-                    listaCelle[i].classList.add('color1');
-                }
-                else{
+            if(bombList.includes(i)){
+                listaCelle[i].classList.add('color1');
+            }
+            else{
+                if(!(listaCelle[i].classList.contains('color2')))
+                {
                     listaCelle[i].classList.add('color2');
+                    score++;
                 }
             }
+            divRisultato.innerHTML= score;
         });
     }
     counteinerQuadrati.append(quadrati);
