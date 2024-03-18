@@ -20,24 +20,35 @@ btnStart.addEventListener('click',function(){
     let min = 0;
     let numBomb = 16;
     let score = 0;
+    let flagStop = false;
     let bombList = genereteUniqueRandomNUmber(min,numQuadrati,numList,count,numBomb);
     console.log(bombList);
+    divRisultato.innerHTML='';
     for(let i = 0; i<numQuadrati; i++){
         quadrati.append(listaCelle[i]);
         listaCelle[i].innerHTML= i + 1;
         listaCelle[i].addEventListener('click', function(){
-            if(bombList.includes(i)){
-                listaCelle[i].classList.add('color1');
+            if(!flagStop){
+                if(bombList.includes(i)){
+                    listaCelle[i].classList.add('color1');
+                    flagStop = true;
+                }
+                else{
+                    if(!(listaCelle[i].classList.contains('color2')))
+                    {
+                        listaCelle[i].classList.add('color2');
+                        score++;
+                    }
+                }
+                divRisultato.innerHTML= `IL TUO PUNTEGGIO:${score}`;
             }
             else{
-                if(!(listaCelle[i].classList.contains('color2')))
-                {
-                    listaCelle[i].classList.add('color2');
-                    score++;
-                }
+                divRisultato.innerHTML= `hai perso IL TUO PUNTEGGIO:${score}`;
             }
-            divRisultato.innerHTML= score;
         });
+    }
+    if(score == 84 ){
+        divRisultato.innerHTML= 'hai vinto';
     }
     counteinerQuadrati.append(quadrati);
     btnReset.classList.remove('d-none');
