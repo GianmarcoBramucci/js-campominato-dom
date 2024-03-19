@@ -44,6 +44,10 @@ btnStart.addEventListener('click',function(){
             }
             else{
                 divRisultato.innerHTML= `hai perso IL TUO PUNTEGGIO:${score}`;
+                for(let h=0; h<bombList.length;h++){
+                    let numTemp =bombList[h]; 
+                    listaCelle[numTemp].classList.add('color1')
+                }
             }
         });
     }
